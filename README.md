@@ -2,12 +2,17 @@
 
 La aplicación está diseñada para gestionar las reservas de hoteles y vuelos, permitiendo realizar las siguientes acciones:
 
-- **Crear hoteles:** Agrega un nuevo hotel con los datos proporcionados.
-- **Mostrar lista de hoteles:** Muestra una lista completa de los ciudadanos registrados en la base de datos.
-- **Registrar turnos:** Permite añadir turnos con información como número, descripción, estado, fecha, y el ciudadano asociado.
-- **Mostrar lista de turnos:** Muestra una lista de turnos registrados, incluyendo filtros por fecha, estado y ciudadano.
-
-En caso de errores (por ejemplo, al intentar agregar datos faltantes), se mostrarán mensajes de error en la interfaz.
+- **Crear hoteles.**
+- **Editar hoteles.**
+- **Eliminar hoteles.**
+- **Buscar hoteles.**
+- **Crear vuelos.**
+- **Editar vuelos.**
+- **Eliminar vuelos.**
+- **Buscar vuelos.**
+- **Hacer reservas de vuelos.**
+- **Hacer reservas de hoteles.**
+- **Buscar usuarios vuelos.**
 
 ## Manejo de Excepciones
 
