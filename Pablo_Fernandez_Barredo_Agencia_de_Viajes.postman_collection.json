@@ -1,0 +1,534 @@
+{
+	"info": {
+		"_postman_id": "565d6071-ed9e-4640-8f5e-7865ce57e35c",
+		"name": "Agencia de Viajes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32987754"
+	},
+	"item": [
+		{
+			"name": "Mostrar todos los vuelos (sin autenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/agency/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar los vuelos disponibles (sin auntenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/agency/flights/search?dateFrom=2025-06-01&dateTo=2025-06-10&origin=Madrid&destination=Cancún",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flights",
+						"search"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "2025-06-01"
+						},
+						{
+							"key": "dateTo",
+							"value": "2025-06-10"
+						},
+						{
+							"key": "origin",
+							"value": "Madrid"
+						},
+						{
+							"key": "destination",
+							"value": "Cancún"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un vuelo (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Vuelo Barcelona-Gijon\",\r\n  \"origen\": \"Barcelona\",\r\n  \"destino\": \"Gijon\",\r\n  \"tipoAsiento\": \"Economy\",\r\n  \"precioVuelo\": 700,\r\n  \"fechaIda\": \"2025-09-09\",\r\n  \"fechaVuelta\": \"2025-10-15\",\r\n  \"estado\": \"DISPONIBLE\"\r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/flights/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flights",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reservar un vuelo (sin auntenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vueloId\": 4,\r\n  \"origen\": \"Barcelona\",\r\n  \"destino\": \"Gijon\",\r\n  \"fechaIda\": \"2025-09-09\",\r\n  \"cantidadPersonas\": 2,\r\n  \"pasajeros\": [1, 2]\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/flight-booking/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flight-booking",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un vuelo (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"codigoVuelo\": \"VL002\",\r\n        \"nombre\": \"Vuelo SSSSS\",\r\n        \"origen\": \"BarcelonaSSSSSSSSSS\",\r\n        \"destino\": \"ParisSSSSSSSSSSSSSSSSSSSSSSSSS\",\r\n        \"tipoAsiento\": \"Economy\",\r\n        \"precioVuelo\": 300.0,\r\n        \"fechaIda\": \"2025-07-02\",\r\n        \"fechaVuelta\": \"2025-07-06\",\r\n        \"estado\": \"DISPONIBLE\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/flights/edit/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flights",
+						"edit",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un vuelo (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vueloId\": 1,\r\n  \"origen\": \"Madrid\",\r\n  \"destino\": \"Cancún\",\r\n  \"fechaIda\": \"2025-06-01\",\r\n  \"cantidadPersonas\": 2,\r\n  \"pasajeros\": [1, 2]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/flights/delete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"flights",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar todos los hoteles (sin autenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/agency/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar las habitaciones disponibles (sin auntenticación)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/rooms?dateFrom=2025-03-01&dateTo=2025-03-10&destination=Barcelona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"rooms"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "2025-03-01"
+						},
+						{
+							"key": "dateTo",
+							"value": "2025-03-10"
+						},
+						{
+							"key": "destination",
+							"value": "Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un hotel (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Hotel Paradise\",\r\n    \"lugar\": \"Cancún\",\r\n    \"precioPorNoche\": 150.00,\r\n    \"disponibleDesde\": \"2025-02-28\",\r\n    \"disponibleHasta\": \"2025-12-31\",\r\n    \"estado\": \"DISPONIBLE\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/hotels/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"hotels",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reservar una habitación (sin auntenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hotelId\": 4,\r\n  \"fechaEntrada\": \"2025-02-28\",\r\n  \"fechaSalida\": \"2025-12-31\",\r\n  \"cantidadPersonas\": 1,\r\n  \"tipoHabitacion\": \"Single\",\r\n  \"huespedes\": [1]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/room-booking/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"room-booking",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un hotel (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"codigoHotel\": \"HOT002\",\r\n        \"nombre\": \"Hotel SolSSSSSS\",\r\n        \"lugar\": \"MadridSSSSSS\",\r\n        \"precioPorNoche\": 120.0,\r\n        \"disponibleDesde\": \"2025-02-06\",\r\n        \"disponibleHasta\": \"2025-12-23\",\r\n        \"estado\": \"DISPONIBLE\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/hotels/edit/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"hotels",
+						"edit",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un hotel (con auntenticación)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Psjmtoad5630",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Pablo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/agency/hotels/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"hotels",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar todos los usuarios (sin autenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/agency/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar un usuario por ID (sin autenticación)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/agency/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"agency",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
